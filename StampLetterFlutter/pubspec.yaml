@@ -2,20 +2,25 @@ name: stampletter_flutter
 description: A cross-platform StampLetter app built with Flutter.
 publish_to: 'none'
 version: 1.0.0+1
+
 environment:
   sdk: ">=3.4.0 <4.0.0"
+
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
+
+  cupertino_icons: ^1.0.8
   image_picker: ^1.2.2
-  path_provider: ^2.0.15
-  share_plus: ^6.3.4
-  permission_handler: ^10.4.2
-  image_gallery_saver: ^1.7.1
+  path_provider: ^2.1.5
+  share_plus: ^10.1.4
+  permission_handler: ^11.3.1
+  gallery_saver_plus: ^3.2.9
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^4.0.0
+
 flutter:
   uses-material-design: true

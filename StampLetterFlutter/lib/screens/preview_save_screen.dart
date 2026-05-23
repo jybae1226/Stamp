@@ -3,7 +3,7 @@ import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:gallery_saver_plus/gallery_saver.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:share_plus/share_plus.dart';
@@ -50,11 +50,20 @@ class _PreviewSaveScreenState extends State<PreviewSaveScreen> {
       }
     }
 
-    final result = await ImageGallerySaver.saveImage(bytes, quality: 90, name: 'stamp_letter_${DateTime.now().millisecondsSinceEpoch}');
-    if (result['isSuccess'] == true) {
-      setState(() => _message = '사진 앱에 저장되었어요 📮');
-    } else {
-      setState(() => _message = '저장에 실패했어요.' );
+    try {
+      final directory = await getTemporaryDirectory();
+      final fileName = 'stamp_letter_${DateTime.now().millisecondsSinceEpoch}.png';
+      final file = File('${directory.path}/$fileName');
+      await file.writeAsBytes(bytes);
+      
+      final result = await GallerySaver.saveImage(file.path, albumName: 'StampLetter');
+      if (result == true) {
+        setState(() => _message = '사진 앱에 저장되었어요 📮');
+      } else {
+        setState(() => _message = '저장에 실패했어요.');
+      }
+    } catch (e) {
+      setState(() => _message = '저장 중 오류가 발생했어요.');
     }
   }
 

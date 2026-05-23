@@ -12,6 +12,10 @@ pluginManagement {
             flutterSdkPath
         }
 
+    println("FLUTTER_SDK_PATH=$flutterSdkPath")
+    println("FLUTTER_SDK_GRADLE=${file("$flutterSdkPath/packages/flutter_tools/gradle").absolutePath}")
+    println("FLUTTER_SDK_GRADLE_EXISTS=${file("$flutterSdkPath/packages/flutter_tools/gradle").exists()}")
+
     includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
 
     repositories {
