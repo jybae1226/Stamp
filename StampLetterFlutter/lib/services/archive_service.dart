@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
+import 'package:stampletter_flutter/models/stamp.dart';
 import '../models/letter.dart';
 
 class ArchiveService {

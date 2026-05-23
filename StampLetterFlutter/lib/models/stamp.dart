@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/material.dart';
+
 enum StampFrameStyle { classic, modern, vintage }
 
 extension StampFrameStyleX on StampFrameStyle {
